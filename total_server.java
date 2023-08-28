@@ -3,7 +3,7 @@ import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.*;
 
-public class processing {
+public class total_server {
     static int PORT = 5050;
     static int REAP = 1;
     public static void main(String argv[]) throws Exception {
@@ -22,13 +22,13 @@ public class processing {
         private Network(Socket socket) {
             this.socket = socket;
         }
-        public void send() {
+        public void send(String message) {
             String HOST = "YOUR_IP_ADDRESS";
             int    PORT = 8080;
             try {
                 Socket socket = new Socket(HOST, PORT);
                 DataOutputStream out = new DataOutputStream(socket.getOutputStream());
-                out.write(("Hello World!").getBytes()); // Sending data as bytes
+                out.write(message.getBytes()); // Sending data as bytes
                 out.close();
                 socket.close();
             } catch(Exception error) {
@@ -44,7 +44,8 @@ public class processing {
                         break;
                     System.out.print("recieve data : " + data + "\n");
                 }
-                send();
+                // Insert your code here!
+                send("Hello World!");
                 socket.close();
             } catch(Exception error) {
                 System.out.print(error + "\n");
