@@ -1,0 +1,16 @@
+package java;
+
+import java.io.DataOutputStream;
+import java.net.*;
+
+public class client {
+    static String HOST = "YOUR_IP_ADDRESS";
+    static int    PORT = 5050;
+    public static void main(String argv[]) throws Exception {
+        Socket socket = new Socket(HOST, PORT);
+        DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+        out.writeBytes("Hello World!"); // Sending data as bytes
+        out.close();
+        socket.close();
+    }
+}

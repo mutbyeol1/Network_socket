@@ -1,0 +1,23 @@
+package java;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.*;
+
+public class server {
+    static int PORT = 5050;
+    public static void main(String argv[]) throws Exception {
+        ServerSocket server = new ServerSocket(PORT);
+        System.out.printf("Listening...\n");
+        Socket socket = server.accept();
+        BufferedReader conn = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        while(true) {
+            String data = (String)conn.readLine();
+            if(data==null)
+                break;
+            System.out.print("recieve data : " + data + "\n");
+        }
+        server.close();
+        socket.close();
+    }
+}
